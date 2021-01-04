@@ -35,6 +35,7 @@ class RCTVoice {
       onSpeechResults: () => {},
       onSpeechPartialResults: () => {},
       onSpeechVolumeChanged: () => {},
+      onSpeechSegments: () => {}
     };
   }
 
