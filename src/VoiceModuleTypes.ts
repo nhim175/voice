@@ -23,6 +23,7 @@ export type SpeechEvents = {
   onSpeechEnd?: (e: SpeechEndEvent) => void;
   onSpeechError?: (e: SpeechErrorEvent) => void;
   onSpeechResults?: (e: SpeechResultsEvent) => void;
+  onSpeechSegments?: (e:SpeechSegmentsEvent) => void;
   onSpeechPartialResults?: (e: SpeechResultsEvent) => void;
   onSpeechVolumeChanged?: (e: SpeechVolumeChangeEvent) => void;
 };
@@ -38,6 +39,10 @@ export type SpeechRecognizedEvent = {
 export type SpeechResultsEvent = {
   value?: string[];
 };
+
+export type SpeechSegmentsEvent = {
+  value?: any[];
+}
 
 export type SpeechErrorEvent = {
   error?: {

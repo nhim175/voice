@@ -9,6 +9,7 @@ import {
   SpeechStartEvent,
   SpeechEndEvent,
   SpeechVolumeChangeEvent,
+  SpeechSegmentsEvent,
 } from './VoiceModuleTypes';
 
 const Voice = NativeModules.Voice as VoiceModule;
@@ -45,6 +46,7 @@ class RCTVoice {
     Voice.onSpeechResults = undefined;
     Voice.onSpeechPartialResults = undefined;
     Voice.onSpeechVolumeChanged = undefined;
+    Voice.onSpeechSegments = undefined;
   }
 
   destroy() {
@@ -183,6 +185,9 @@ class RCTVoice {
   set onSpeechVolumeChanged(fn: (e: SpeechVolumeChangeEvent) => void) {
     this._events.onSpeechVolumeChanged = fn;
   }
+  set onSpeechSegments(fn: (e: SpeechSegmentsEvent) => void) {
+    this._events.onSpeechSegments = fn;
+  }
 }
 
 export {
@@ -193,5 +198,6 @@ export {
   SpeechRecognizedEvent,
   SpeechResultsEvent,
   SpeechVolumeChangeEvent,
+  SpeechSegmentsEvent,
 };
 export default new RCTVoice();
