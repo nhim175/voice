@@ -205,7 +205,7 @@
         
         NSMutableArray* segments = [NSMutableArray new];
         for (SFTranscriptionSegment* segment in result.bestTranscription.segments) {
-            [segments addObject:@{@"text": segment.substring, @"confidence": segment.confidence}];
+            [segments addObject:@{@"text": segment.substring, @"confidence":[NSNumber numberWithFloat:segment.confidence]}];
         }
         
         
@@ -312,7 +312,7 @@
     }
     if (bestTranscription != nil) {
         [self sendEventWithName:@"onSpeechResults" body:@{@"value":@[bestTranscription]} ];
-        [self sendEventWithName:@"onSpeechSegments" body:@{@"value":@[segments]}];
+        [self sendEventWithName:@"onSpeechSegments" body:@{@"value":segments}];
     }
     if (transcriptions != nil) {
         [self sendEventWithName:@"onSpeechPartialResults" body:@{@"value":transcriptions}];
