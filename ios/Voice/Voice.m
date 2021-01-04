@@ -203,8 +203,13 @@
             [transcriptionDics addObject:transcription.formattedString];
         }
         
+        NSMutableArray* segments = [NSMutableArray new];
+        for (SFTranscriptionSegment* segment in result.bestTranscription.segments) {
+            [segments addObject:@{@"text": segment.substring, @"confidence": segment.confidence}];
+        }
         
-        [self sendResult :nil :result.bestTranscription.formattedString :transcriptionDics :result.bestTranscription.segments :[NSNumber numberWithBool:isFinal]];
+        
+        [self sendResult :nil :result.bestTranscription.formattedString :transcriptionDics :segments :[NSNumber numberWithBool:isFinal]];
         
         if (isFinal || self.recognitionTask.isCancelled || self.recognitionTask.isFinishing) {
             [self sendEventWithName:@"onSpeechEnd" body:nil];
