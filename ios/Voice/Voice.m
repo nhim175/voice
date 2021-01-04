@@ -307,7 +307,7 @@
     }
     if (bestTranscription != nil) {
         [self sendEventWithName:@"onSpeechResults" body:@{@"value":@[bestTranscription]} ];
-        [self sendEventWithName:@"onSpeechSegments" body:@{@"value":@[segments]}]
+        [self sendEventWithName:@"onSpeechSegments" body:@{@"value":@[segments]}];
     }
     if (transcriptions != nil) {
         [self sendEventWithName:@"onSpeechPartialResults" body:@{@"value":transcriptions}];
